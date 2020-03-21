@@ -11,6 +11,7 @@ diesel migration redo
 
 cargo run --bin show_posts
 cargo run --bin write_post
+cargo run --bin publish_post
 ```
 
 ## Sqlite
