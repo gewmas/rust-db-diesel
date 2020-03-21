@@ -7,8 +7,8 @@ extern crate dotenv;
 
 use diesel::prelude::*;
 use dotenv::dotenv;
+use models::{NewPost, Post};
 use std::env;
-use models::{Post, NewPost};
 
 use diesel::sqlite::SqliteConnection;
 
@@ -31,10 +31,15 @@ pub fn create_post<'a>(conn: &SqliteConnection, title: &'a str, body: &'a str) -
     let inserted_rows = diesel::insert_into(posts::table)
         .values(&new_post)
         .execute(conn);
-        // .get_results(conn);
-        // .expect("Error saving new post")
-    
+    // .get_results(conn);
+    // .expect("Error saving new post")
+
     println!("inserted rows {:?}", inserted_rows);
 
-    Post { id: Option::Some(1), body: "Hello".to_string(), title: "Hi".to_string(), published: true }
+    Post {
+        id: Option::Some(1),
+        body: "Hello".to_string(),
+        title: "Hi".to_string(),
+        published: true,
+    }
 }
